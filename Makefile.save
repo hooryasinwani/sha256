@@ -1,0 +1,12 @@
+# Makefile for running Cocotb test
+
+TOPLEVEL_LANG = verilog
+SIM = icarus  # Or you can use verilator if preferred
+
+VERILOG_SOURCES = $(shell pwd)/sha2_single.v  # Add your Verilog module here
+TOPLEVEL = sha2_top  # Top module to simulate
+MODULE = sha256cocotb  # Python test module
+
+SIM_ARGS = -sv# Use cocotb-config to find the appropriate paths
+include $(shell cocotb-config --makefiles)/Makefile.sim
+
